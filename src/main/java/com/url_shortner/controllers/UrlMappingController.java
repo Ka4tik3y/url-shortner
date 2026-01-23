@@ -65,6 +65,5 @@ public class UrlMappingController {
         LocalDate  endDateTime = LocalDate.parse(endDate, dateTimeFormatter);
         Map<LocalDate, Long> totalClicks = urlMappingService.getTotalClicksByUserAndDate(user, startDateTime,endDateTime);
         return  ResponseEntity.ok(totalClicks);
-
     }
 }
