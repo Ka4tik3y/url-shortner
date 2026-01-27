@@ -29,8 +29,6 @@ user.setPassword(passwordEncoder.encode(user.getPassword()));
 return userRepository.save(user);
     }
 
-
-
 //login
     public JwtAuthenticationResponse authenticateUser(LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
@@ -43,16 +41,13 @@ return userRepository.save(user);
         return new JwtAuthenticationResponse(jwt);
     }
 
-
 //retrieve user info based on the  unique username saved in the database
     public User findByUsername(String name) {
         return userRepository.findByUsername(name).orElseThrow(
-                () -> new UsernameNotFoundException("Username not found" + name)
-        );
+                () -> new UsernameNotFoundException("Username not found" + name));
     }
 //logout the user
     public void logoutUser(){
         SecurityContextHolder.clearContext();
-//        System.out.println(token);
     }
 }

@@ -18,6 +18,7 @@ private UserService userService;
 public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
 return ResponseEntity.ok(userService.authenticateUser(loginRequest));
 }
+
 @PostMapping("/public/logout")
 public ResponseEntity<?> logoutUser(){
     userService.logoutUser();
