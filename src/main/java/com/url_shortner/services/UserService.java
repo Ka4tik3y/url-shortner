@@ -6,6 +6,7 @@ import com.url_shortner.repo.UserRepository;
 import com.url_shortner.security.jwt.JwtAuthenticationResponse;
 import com.url_shortner.security.jwt.JwtUtils;
 import lombok.AllArgsConstructor;
+import org.aspectj.weaver.patterns.IToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -48,5 +49,10 @@ return userRepository.save(user);
         return userRepository.findByUsername(name).orElseThrow(
                 () -> new UsernameNotFoundException("Username not found" + name)
         );
+    }
+//logout the user
+    public void logoutUser(){
+        SecurityContextHolder.clearContext();
+//        System.out.println(token);
     }
 }

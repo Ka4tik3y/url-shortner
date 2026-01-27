@@ -18,6 +18,11 @@ private UserService userService;
 public ResponseEntity<?> loginUser(@RequestBody LoginRequest loginRequest){
 return ResponseEntity.ok(userService.authenticateUser(loginRequest));
 }
+@PostMapping("/public/logout")
+public ResponseEntity<?> logoutUser(){
+    userService.logoutUser();
+    return ResponseEntity.ok("Logout successful");
+}
 
 @PostMapping("/public/register")
     public ResponseEntity<?> auth (@RequestBody RegisterRequest registerRequest) {
